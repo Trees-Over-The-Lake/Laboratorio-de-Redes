@@ -1,272 +1,280 @@
 
-ping A  : 0
-pong D  : 0
-ping B  : 0
-pong C  : 1
-ping B  : 1
-pong D  : 1
-ping B  : 2
-pong D  : 2
-ping A  : 2
-pong C  : 3
-ping B  : 3
-pong D  : 4
-ping A  : 4
-pong C  : 4
-ping B  : 4
-pong D  : 5
-ping A  : 5
-pong C  : 5
-ping B  : 5
-pong D  : 6
-ping A  : 6
-pong C  : 7
-ping A  : 7
-pong D  : 7
-ping B  : 7
-pong C  : 8
-ping B  : 8
-pong D  : 8
-ping B  : 9
-pong D  : 9
-ping A  : 9
-pong C  : 10
-ping B  : 10
-pong D  : 10
-ping B  : 11
-pong D  : 11
-ping A  : 11
-pong C  : 12
-ping B  : 12
-pong D  : 12
-ping A  : 12
-pong C  : 13
-ping B  : 13
-pong C  : 14
-ping B  : 14
-pong D  : 14
-ping B  : 15
-pong D  : 15
-ping A  : 15
-pong C  : 16
-ping B  : 16
-pong D  : 16
-ping A  : 16
-pong C  : 17
-ping B  : 17
-pong D  : 17
-ping A  : 17
-pong C  : 18
-ping B  : 18
-pong D  : 18
-ping A  : 18
-pong C  : 19
-ping B  : 19
-pong D  : 19
-ping A  : 19
-pong D  : 20
-ping A  : 20
-pong C  : 20
-ping A  : 21
-pong C  : 21
-ping B  : 21
-pong D  : 22
-ping A  : 22
-pong C  : 22
-ping B  : 22
-pong D  : 23
-ping A  : 23
-pong C  : 23
-ping B  : 24
-pong C  : 24
-ping A  : 24
-pong D  : 25
-ping A  : 25
-pong C  : 25
-ping B  : 26
-pong C  : 26
-ping A  : 26
-pong D  : 26
-ping B  : 27
-pong C  : 27
-ping B  : 28
-pong D  : 28
-ping A  : 28
-pong D  : 29
-ping A  : 29
-pong C  : 29
-ping B  : 30
-pong C  : 30
-ping A  : 30
-pong D  : 30
-ping A  : 31
-pong D  : 31
-ping B  : 31
-pong C  : 31
-ping A  : 32
-pong C  : 32
-ping B  : 32
-pong D  : 33
-ping B  : 33
-pong C  : 33
-ping A  : 34
-pong D  : 34
-ping B  : 34
-pong C  : 34
-ping A  : 35
-pong C  : 35
-ping A  : 36
-pong C  : 36
-ping B  : 36
-pong C  : 37
-ping B  : 37
-pong D  : 37
-ping B  : 38
-pong D  : 38
-ping A  : 38
-pong C  : 39
-ping A  : 39
-pong D  : 39
-ping B  : 40
-pong D  : 40
-ping B  : 41
-pong D  : 41
-ping A  : 41
-pong C  : 42
-ping B  : 42
-pong D  : 42
-ping A  : 42
-pong C  : 43
-ping B  : 43
-pong D  : 43
-ping A  : 43
-pong C  : 44
-ping B  : 44
-pong D  : 44
-ping A  : 44
-pong D  : 45
-ping B  : 45
-pong C  : 46
-ping A  : 46
-pong D  : 46
-ping B  : 46
-pong C  : 47
-ping B  : 47
-pong C  : 48
-ping B  : 48
-pong C  : 49
-ping A  : 49
-pong D  : 49
-ping B  : 49
-pong C  : 50
-ping A  : 50
-pong D  : 51
-ping B  : 51
-pong D  : 52
-ping A  : 52
-pong D  : 53
-ping A  : 53
-pong C  : 54
-ping A  : 54
-pong C  : 55
-ping A  : 55
-pong C  : 56
-ping A  : 56
-pong D  : 56
-ping B  : 56
-pong C  : 57
-ping B  : 57
-pong C  : 58
-ping A  : 58
-pong D  : 58
-ping B  : 58
-pong C  : 59
-ping A  : 59
-pong D  : 59
-ping B  : 59
-pong C  : 60
-ping A  : 60
-pong C  : 61
-ping B  : 61
-pong C  : 62
-ping B  : 62
-pong C  : 63
-ping B  : 63
-pong C  : 64
-ping B  : 64
-pong C  : 65
-ping B  : 65
-pong C  : 66
-ping B  : 66
-pong C  : 67
-ping B  : 67
-pong D  : 68
-ping B  : 68
-pong D  : 69
-ping B  : 69
-pong D  : 70
-ping B  : 70
-pong D  : 71
-ping B  : 71
-pong D  : 72
-ping B  : 72
-pong D  : 73
-ping B  : 73
-pong D  : 74
-ping B  : 74
-pong C  : 75
-ping B  : 75
-pong C  : 76
-ping B  : 76
-pong C  : 77
-ping B  : 77
-pong C  : 78
-ping B  : 78
-pong C  : 79
-ping B  : 79
-pong C  : 80
-ping B  : 80
-pong D  : 81
-ping B  : 81
-pong C  : 82
-ping B  : 82
-pong C  : 83
-ping B  : 83
-pong C  : 84
-ping B  : 84
-pong D  : 85
-ping B  : 85
-pong C  : 86
-ping B  : 86
-pong D  : 87
-ping B  : 87
-pong C  : 88
-ping B  : 88
-pong C  : 89
-ping B  : 89
-pong C  : 90
-ping B  : 90
-pong D  : 91
-ping B  : 91
-pong D  : 92
-ping B  : 92
-pong C  : 92
-ping A  : 93
-pong D  : 93
-ping A  : 94
-pong D  : 94
-ping B  : 94
-pong C  : 95
-ping B  : 95
-pong D  : 95
-ping A  : 96
-pong C  : 96
-ping B  : 96
-pong D  : 96
-ping A  : 97
-pong C  : 97
-ping B  : 97
-pong C  : 98
-ping B  : 98
-pong C  : 99
-ping B  : 99
+Lucas		:0
+Oponente B		:0
+Aliado		:0
+Oponente B		:1
+Lucas		:1
+Oponente B		:2
+Lucas		:2
+Oponente B		:3
+Lucas		:3
+Oponente A		:4
+Aliado		:4
+Oponente B		:4
+Lucas		:4
+Oponente A		:5
+Aliado		:5
+Oponente B		:5
+Lucas		:5
+Oponente A		:6
+Lucas		:6
+Oponente B		:6
+Aliado		:6
+Oponente A		:7
+Aliado		:7
+Oponente B		:7
+Lucas		:7
+Oponente A		:8
+Lucas		:8
+Oponente A		:9
+Lucas		:9
+Oponente A		:10
+Lucas		:10
+Oponente A		:11
+Lucas		:11
+Oponente B		:11
+Aliado		:11
+Oponente A		:12
+Lucas		:12
+Oponente B		:12
+Aliado		:12
+Oponente A		:13
+Aliado		:13
+Oponente B		:13
+Lucas		:13
+Oponente A		:14
+Lucas		:14
+Oponente A		:15
+Aliado		:15
+Oponente B		:16
+Lucas		:16
+Oponente A		:16
+Aliado		:17
+Oponente A		:17
+Lucas		:17
+Oponente B		:18
+Aliado		:18
+Oponente A		:18
+Lucas		:19
+Oponente A		:19
+Aliado		:19
+Oponente A		:20
+Aliado		:20
+Oponente B		:20
+Lucas		:20
+Oponente A		:21
+Aliado		:21
+Oponente A		:22
+Lucas		:22
+Oponente B		:22
+Aliado		:22
+Oponente A		:23
+Lucas		:23
+Oponente B		:23
+Aliado		:23
+Oponente A		:24
+Lucas		:24
+Oponente B		:24
+Aliado		:24
+Oponente A		:25
+Aliado		:25
+Oponente B		:25
+Lucas		:25
+Oponente A		:26
+Aliado		:26
+Oponente B		:26
+Lucas		:26
+Oponente A		:27
+Lucas		:27
+Oponente B		:27
+Aliado		:27
+Oponente A		:28
+Aliado		:28
+Oponente B		:28
+Lucas		:28
+Oponente A		:29
+Lucas		:29
+Oponente A		:30
+Lucas		:30
+Oponente A		:31
+Lucas		:31
+Oponente B		:31
+Aliado		:31
+Oponente A		:32
+Aliado		:32
+Oponente B		:32
+Lucas		:32
+Oponente A		:33
+Lucas		:33
+Oponente B		:33
+Aliado		:33
+Oponente A		:34
+Aliado		:34
+Oponente A		:35
+Lucas		:35
+Oponente B		:35
+Aliado		:35
+Oponente A		:36
+Aliado		:36
+Oponente B		:36
+Lucas		:37
+Oponente B		:37
+Aliado		:37
+Oponente A		:38
+Lucas		:38
+Oponente B		:39
+Lucas		:39
+Oponente A		:39
+Lucas		:40
+Oponente A		:40
+Aliado		:40
+Oponente B		:41
+Aliado		:41
+Oponente A		:41
+Lucas		:42
+Oponente B		:42
+Aliado		:42
+Oponente A		:42
+Lucas		:43
+Oponente A		:43
+Lucas		:44
+Oponente A		:44
+Lucas		:45
+Oponente A		:45
+Aliado		:46
+Oponente A		:46
+Aliado		:47
+Oponente A		:47
+Aliado		:48
+Oponente A		:48
+Lucas		:49
+Oponente A		:49
+Lucas		:50
+Oponente B		:50
+Lucas		:51
+Oponente A		:51
+Aliado		:51
+Oponente B		:52
+Aliado		:52
+Oponente A		:52
+Lucas		:53
+Oponente A		:53
+Aliado		:54
+Oponente B		:54
+Aliado		:55
+Oponente A		:55
+Aliado		:56
+Oponente A		:56
+Lucas		:57
+Oponente A		:57
+Aliado		:57
+Oponente B		:58
+Aliado		:58
+Oponente B		:59
+Aliado		:59
+Oponente B		:60
+Aliado		:61
+Oponente A		:61
+Lucas		:61
+Oponente B		:62
+Aliado		:62
+Oponente A		:62
+Lucas		:62
+Oponente B		:63
+Aliado		:63
+Oponente A		:63
+Lucas		:63
+Oponente B		:64
+Lucas		:64
+Oponente B		:65
+Lucas		:65
+Oponente A		:66
+Lucas		:66
+Oponente B		:67
+Lucas		:67
+Oponente B		:68
+Lucas		:68
+Oponente B		:69
+Lucas		:70
+Oponente A		:70
+Aliado		:70
+Oponente B		:71
+Lucas		:71
+Oponente A		:71
+Lucas		:72
+Oponente A		:72
+Aliado		:72
+Oponente B		:73
+Lucas		:73
+Oponente A		:73
+Aliado		:73
+Oponente B		:74
+Aliado		:74
+Oponente B		:75
+Aliado		:75
+Oponente A		:75
+Lucas		:75
+Oponente B		:76
+Lucas		:76
+Oponente A		:76
+Aliado		:76
+Oponente B		:77
+Aliado		:77
+Oponente A		:77
+Lucas		:77
+Oponente B		:78
+Lucas		:78
+Oponente A		:78
+Aliado		:78
+Oponente B		:79
+Lucas		:79
+Oponente A		:79
+Lucas		:80
+Oponente A		:80
+Lucas		:81
+Oponente A		:81
+Aliado		:81
+Oponente B		:82
+Lucas		:82
+Oponente A		:82
+Aliado		:82
+Oponente B		:83
+Lucas		:83
+Oponente A		:83
+Aliado		:83
+Oponente B		:84
+Aliado		:84
+Oponente B		:85
+Aliado		:85
+Oponente A		:86
+Aliado		:86
+Oponente B		:86
+Lucas		:86
+Oponente A		:87
+Lucas		:87
+Oponente B		:88
+Lucas		:88
+Oponente A		:88
+Aliado		:88
+Oponente B		:89
+Aliado		:89
+Oponente B		:90
+Aliado		:91
+Oponente A		:91
+Lucas		:91
+Oponente B		:92
+Aliado		:92
+Oponente B		:93
+Aliado		:93
+Oponente B		:94
+Aliado		:94
+Oponente B		:95
+Aliado		:95
+Oponente B		:96
+Aliado		:96
+Oponente B		:97
+Lucas		:97
+Oponente B		:98
+Aliado		:98
+Oponente B		:99
+Aliado		:99
