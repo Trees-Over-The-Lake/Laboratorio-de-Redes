@@ -14,8 +14,23 @@ class Cliente:
         
     # Conectar em um servidor
     def conectar(self) -> None:
-        self.conexao = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)   
-        self.conexao.connect((self.IP, self.PORT))
+        # Tentar logar por IPv4
+        try:
+            self.conexao = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
+            self.conexao.connect((self.IP, self.PORT))
+            return
+        
+        # Tentar logar por IPv6
+        except:
+            try:
+                self.conexao = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)   
+                self.conexao.connect((self.IP, self.PORT))
+                return
+            
+            # Ip Inválido!        
+            except:
+                print('Impossível conectar ao servidor, tente outro IP!')
+
         
     # Fechar conexão
     def fechar(self) -> None:
