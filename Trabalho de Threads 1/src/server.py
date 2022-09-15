@@ -51,9 +51,12 @@ class Server:
     DISCONNECT_MSG = PREFIXO+'DESCONECTAR' # Mensagem para desconectar o cliente
 
     # Construtor para criar um servidor
-    def __init__(self, host: str, port: int) -> None:
+    def __init__(self, host: str, port: int, ingressos) -> None:
         self.HOST = host
         self.PORT = port
+        
+        # Ingressos disponíveis à venda
+        self.ingressos = ingressos
         
         # Inicializando os comandos possíveis para o servidor
         self.comandos = Commands(self.PREFIXO)
@@ -87,22 +90,52 @@ class Server:
                 mensagem = 'A desconexão foi um sucesso!'
             
             elif mensagem.upper() == self.PREFIXO+self.comandos.AJUDA:     
-                mensagem = f"{self.comandos.getMsgAjuda()}"                
+                mensagem = f"{self.comandos.getMsgAjuda()}"    
+                
+            elif mensagem.upper() == self.PREFIXO+self.comandos.LISTAR:
+                mensagem = self.getEventos()                
             
             cliente.send(mensagem.encode(self.FORMAT))
         
         cliente.close()
         
+    # Gerar a mensagem de eventos disponíveis
+    def getEventos(self)-> str:
+        mensagem = ""
+        
+        index = 1
+        for evento, preco in self.ingressos:
+            mensagem += f"{index}: {evento} custando R${preco}\n"
+            index += 1
+            
+        return mensagem
+        
+    # Ver quantos clientes estão efetivamente conectados no momento
     def getNumClientsConnected(self) -> int:
         return threading.active_count()
     
+    # Desligar todos os processos do servidor
     def close_server(self):
         self.conexao.close()
         print("Server desligado!")
 
 def main() -> None:
+    # Criando os ingressos
+    print('Digite o nome dos eventos que serão vendidos e o preço depois de dois pontos (:), zero (0) para ligar o servidor:')
+    
+    ingressos_a_venda = []
+    
+    entrada = input('> ')
+    while entrada != '0':
+        nome, preco = entrada.split(':')
+        ingressos_a_venda.append((nome.strip(), preco.strip()))
+        
+        entrada = input('> ')
+        
+    print(f"\nIngressos disponíveis à venda: {ingressos_a_venda}")
+    
     # Abrindo o servidor em todos os dispositivos de rede (Linux)
-    server = Server('::', 25665)
+    server = Server('::', 25665, ingressos_a_venda)
     server.open()
     
     clientes = []
