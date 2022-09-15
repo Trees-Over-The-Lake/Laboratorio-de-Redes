@@ -6,6 +6,13 @@ class Cliente:
 
     # Socket que guarda a conexão com o servidor
     conexao: socket.socket 
+    
+    PACKET_SIZE = 1024 # Tamanho em bytes do pacote
+    FORMAT = 'utf-8'   # Formato que o pacote será codificado
+    
+    # Comandos
+    PREFIXO = '!' # Prefixo usado para executar comandos
+    DISCONNECT_MSG = PREFIXO+'DESCONECTAR' # Mensagem para desconectar o cliente
 
     # Criando um novo cliente
     def __init__(self, ip, porta) -> None:
@@ -31,7 +38,25 @@ class Cliente:
             except:
                 print('Impossível conectar ao servidor, tente outro IP!')
 
+    # Gerênciar cliente
+    def handle(self):
+        conectado = True
+        print(self.conexao.recv(self.PACKET_SIZE).decode(self.FORMAT))
         
+        while conectado:
+            # Enviando mensagem para o servidor
+            mensagem = input("> ")
+            
+            # Enviando a mensagem
+            self.conexao.send(mensagem.encode(self.FORMAT))
+            
+            # Desconectar cliente
+            if mensagem.upper() == self.DISCONNECT_MSG:
+                conectado = False
+               
+            mensagem = self.conexao.recv(self.PACKET_SIZE).decode(self.FORMAT)
+            print(f"[SERVER]: {mensagem}")
+    
     # Fechar conexão
     def fechar(self) -> None:
         self.conexao.close()       
@@ -40,10 +65,7 @@ class Cliente:
 def main() -> None:
     cliente = Cliente("::1", 25665)
     cliente.conectar()
-    
-    
-    print(f"Conectei ao servidor!")
-    #input("Digite qualquer coisa para sair")
+    cliente.handle()
     cliente.fechar()
         
 
