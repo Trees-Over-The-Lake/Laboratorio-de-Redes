@@ -33,7 +33,7 @@ class Commands:
 {self.PREFIXO}escolher -> Escolher qual será o ingresso para a compra
 {self.PREFIXO}comprar -> Comprar um novo ingresso
 {self.PREFIXO}desconectar -> Desconectar do servidor
-    """
+"""
     
 class Server:    
     HOST: str # Host do serviço
@@ -86,14 +86,22 @@ class Server:
             
             if mensagem.upper() == self.DISCONNECT_MSG:
                 connected = False
-                print(f"[CLIENTE]: {endereco[0]} se desconectou!")
+                # O server é uma thread e esse cliente ainda é uma thread, pois ainda não fechou a conexão TCP
+                print(f"[CLIENTE]: {endereco[0]}:{endereco[1]} se desconectou! Atualmente há {self.getNumClientsConnected()-2} clientes conectados")
                 mensagem = 'A desconexão foi um sucesso!'
             
             elif mensagem.upper() == self.PREFIXO+self.comandos.AJUDA:     
                 mensagem = f"{self.comandos.getMsgAjuda()}"    
                 
             elif mensagem.upper() == self.PREFIXO+self.comandos.LISTAR:
-                mensagem = self.getEventos()                
+                mensagem = self.getEventos()
+                
+            elif mensagem.upper() == self.PREFIXO+self.comandos.ESCOLHER:
+                mensagem = self.escolherIngresso(mensagem)
+                
+            elif mensagem.upper() == self.PREFIXO+self.comandos.COMPRAR:
+                pass
+                
             
             cliente.send(mensagem.encode(self.FORMAT))
         
@@ -104,11 +112,40 @@ class Server:
         mensagem = ""
         
         index = 1
-        for evento, preco in self.ingressos:
-            mensagem += f"{index}: {evento} custando R${preco}\n"
+        for evento, preco, qnt_disponivel in self.ingressos:
+            mensagem += f"ID {index}: {evento} custando R${preco}, há mais {qnt_disponivel} ingressos disponíveis\n"
             index += 1
             
         return mensagem
+    
+    # Gerar a tela de escolher ingressos
+    def escolherIngresso(self, msg: str) -> str:
+        ingresso = self.verificarIngresso(msg.strip(' ')[-1])
+        
+        if type(ingresso) == int:
+            return f"Ingresso {ingresso} selecionado! Deseja comprá-lo?"
+        
+        else:
+            return ingresso
+        
+    def verificarIngresso(self, msg: str) -> int:
+        # Tentar converter para inteiro 
+        try:
+            item_escolhido = int(msg) 
+        except:
+            return 'Apenas números são reconhidos!'
+        
+        # Verificar se esse item existe
+        try:
+            self.ingressos[item_escolhido+1]
+        except:
+            return 'Item inválido escolhido'
+        
+        return item_escolhido
+    
+    # Comprar os ingressos
+    def comprarIngresso(self, msg: str) -> str:
+        pass
         
     # Ver quantos clientes estão efetivamente conectados no momento
     def getNumClientsConnected(self) -> int:
@@ -121,14 +158,14 @@ class Server:
 
 def main() -> None:
     # Criando os ingressos
-    print('Digite o nome dos eventos que serão vendidos e o preço depois de dois pontos (:), zero (0) para ligar o servidor:')
+    print('Digite o nome dos eventos que serão vendidos, o preço e a quantidade de ingressos disponíveis divididos por dois pontos (:), zero (0) para ligar o servidor:')
     
     ingressos_a_venda = []
     
     entrada = input('> ')
     while entrada != '0':
-        nome, preco = entrada.split(':')
-        ingressos_a_venda.append((nome.strip(), preco.strip()))
+        nome, preco, qnt_disponivel = entrada.split(':')
+        ingressos_a_venda.append((nome.strip(), float(preco.strip()), int(qnt_disponivel.strip())))
         
         entrada = input('> ')
         
