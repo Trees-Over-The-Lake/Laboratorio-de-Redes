@@ -63,7 +63,7 @@ class Cliente:
         
 
 def main() -> None:
-    cliente = Cliente("::1", 25665)
+    cliente = Cliente(input('Digite o IP que deseja conectar: '), 25665)
     cliente.conectar()
     cliente.handle()
     cliente.fechar()
