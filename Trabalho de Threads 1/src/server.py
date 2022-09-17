@@ -11,12 +11,10 @@ class Commands:
     
     # Listar os comandos possíveis
     AJUDA = 'AJUDA'
-    # Comprar ingresso
-    COMPRAR = 'COMPRAR'
     # Listar ingressos disponíveis
     LISTAR = 'LISTAR'
     # Escolher ingresso
-    ESCOLHER = 'ESCOLHER'
+    ESCOLHER = 'COMPRAR'
 
     
     # Mensagens de resposta para o usuário
@@ -30,7 +28,6 @@ class Commands:
         return f"""Os comandos reconhecidos pelo servidor são: (O servidor não é case-sensitive)
 {self.PREFIXO}ajuda -> Obter essa lista de comandos
 {self.PREFIXO}listar -> listar os ingressos disponíveis
-{self.PREFIXO}escolher -> Escolher qual será o ingresso para a compra
 {self.PREFIXO}comprar -> Comprar um novo ingresso
 {self.PREFIXO}desconectar -> Desconectar do servidor
 """
@@ -41,6 +38,9 @@ class Server:
     
     # Conexão que será aberta
     conexao: socket.socket
+    
+    # Thread lock
+    lock = threading.Lock()
     
     # Codificações necessárias para o servidor funcionar
     PACKET_SIZE = 1024 # Tamanho em bytes do pacote
@@ -96,12 +96,30 @@ class Server:
             elif mensagem.upper() == self.PREFIXO+self.comandos.LISTAR:
                 mensagem = self.getEventos()
                 
-            elif mensagem.upper() == self.PREFIXO+self.comandos.ESCOLHER:
-                mensagem = self.escolherIngresso(mensagem)
+            elif mensagem.upper().split(' ')[0] == self.PREFIXO+self.comandos.ESCOLHER:
+                with self.lock:
+                    i_ingressos = self.escolherIngresso(mensagem)
+                    
+                    if type(i_ingressos) == str:
+                        cliente.send("Valor não reconhecido, tente novamente!".encode(self.FORMAT))
+                        continue
+                    
+                    if self.ingressos[i_ingressos][2] < 1:
+                        cliente.send(f"Não há mais ingressos para {self.ingressos[i_ingressos][0]} disponíveis!".encode(self.FORMAT))
+                        continue
+                    
+                    cliente.send(f"Você deseja comprar {self.ingressos[i_ingressos][0]} por R${self.ingressos[i_ingressos][1]}? Há mais {self.ingressos[i_ingressos][2]} ingressos disponíveis! (0 para cancelar)".encode(self.FORMAT))
+                    mensagem = cliente.recv(self.PACKET_SIZE).decode(self.FORMAT)
+                    
+                    if mensagem != '0':
+                        self.ingressos[i_ingressos][2] -= 1
+                        mensagem = 'A compra foi um sucesso!'       
+                    
+                    else:
+                        mensagem = 'A compra não foi completada!'
                 
-            elif mensagem.upper() == self.PREFIXO+self.comandos.COMPRAR:
-                pass
-                
+            else:
+                mensagem = "Comando não reconhecido! Tente novamente!"
             
             cliente.send(mensagem.encode(self.FORMAT))
         
@@ -120,32 +138,16 @@ class Server:
     
     # Gerar a tela de escolher ingressos
     def escolherIngresso(self, msg: str) -> str:
-        ingresso = self.verificarIngresso(msg.strip(' ')[-1])
-        
-        if type(ingresso) == int:
-            return f"Ingresso {ingresso} selecionado! Deseja comprá-lo?"
-        
-        else:
-            return ingresso
-        
-    def verificarIngresso(self, msg: str) -> int:
-        # Tentar converter para inteiro 
+        ingresso = msg.split(' ')[-1].strip()
+                
         try:
-            item_escolhido = int(msg) 
-        except:
-            return 'Apenas números são reconhidos!'
+            ing = int(ingresso)-1 # Usar o número do id da lista não o valor escrito na tela do cliente
+            evento = self.ingressos[ing][0] 
+            print(f"Ingresso {ing} para {evento} sendo comprado! Outras compras bloqueadas!")
+            return ing 
         
-        # Verificar se esse item existe
-        try:
-            self.ingressos[item_escolhido+1]
         except:
-            return 'Item inválido escolhido'
-        
-        return item_escolhido
-    
-    # Comprar os ingressos
-    def comprarIngresso(self, msg: str) -> str:
-        pass
+            return 'O valor inserido não foi reconhecido'  
         
     # Ver quantos clientes estão efetivamente conectados no momento
     def getNumClientsConnected(self) -> int:
@@ -165,7 +167,7 @@ def main() -> None:
     entrada = input('> ')
     while entrada != '0':
         nome, preco, qnt_disponivel = entrada.split(':')
-        ingressos_a_venda.append((nome.strip(), float(preco.strip()), int(qnt_disponivel.strip())))
+        ingressos_a_venda.append([nome.strip(), float(preco.strip()), int(qnt_disponivel.strip())])
         
         entrada = input('> ')
         
